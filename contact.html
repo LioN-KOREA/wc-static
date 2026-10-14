@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONTACT | 워드캣</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo"><img src="assets/logo.png" alt="WORDCAT"></a>
+    <nav class="gnb">
+      <a href="about.html">ABOUT</a>
+      <a href="imc.html">IMC</a>
+      <a href="mice.html">MICE</a>
+      <a href="translation.html">TRANSLATION</a>
+      <a href="works.html">WORKS</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+    <div class="header-right">
+      <a href="contact.html" class="btn-contact">LET'S TALK</a>
+      <button class="menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-menu">
+  <a href="about.html">ABOUT<small>회사소개</small></a>
+  <a href="imc.html">IMC<small>통합마케팅</small></a>
+  <a href="mice.html">MICE<small>마이스</small></a>
+  <a href="translation.html">TRANSLATION<small>통번역</small></a>
+  <a href="works.html">WORKS<small>포트폴리오</small></a>
+  <a href="contact.html">CONTACT<small>문의하기</small></a>
+  <div class="m-contact">T. 02-000-0000<br>E. contact@wordcat.co.kr</div>
+</nav>
+
+<section class="sub-hero plain">
+  <div class="container">
+    <p class="breadcrumb reveal">HOME / CONTACT</p>
+    <h1 class="reveal d1">LET'S TALK</h1>
+    <p class="lead reveal d2">프로젝트에 대해 알려주시면, 담당자가 빠르게 연락드리겠습니다.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container contact-wrap">
+    <aside class="contact-side">
+      <span class="label reveal">(CONTACT)</span>
+      <h2 class="title reveal">어떤 프로젝트든<br>편하게 문의하세요.</h2>
+      <p class="desc reveal d1">영업일 기준 1~2일 이내에<br>담당자가 회신드립니다.</p>
+      <dl class="items reveal d1">
+        <div><dt>TEL</dt><dd>02-000-0000</dd></div>
+        <div><dt>E-MAIL</dt><dd>contact@wordcat.co.kr</dd></div>
+        <div><dt>HOURS</dt><dd>평일 09:00 – 18:00</dd></div>
+      </dl>
+      <a href="#" class="btn-line reveal d2">COMPANY FILE ↓</a>
+    </aside>
+
+    <div>
+      <form id="contactForm" class="form" novalidate>
+        <div class="field reveal">
+          <span class="lbl">문의 분야<i>*</i></span>
+          <div class="chips-select">
+            <input type="radio" name="type" id="t-imc" value="imc" checked><label for="t-imc">IMC 통합마케팅</label>
+            <input type="radio" name="type" id="t-mice" value="mice"><label for="t-mice">MICE · 행사</label>
+            <input type="radio" name="type" id="t-trans" value="translation"><label for="t-trans">통번역</label>
+            <input type="radio" name="type" id="t-etc" value="etc"><label for="t-etc">기타</label>
+          </div>
+        </div>
+
+        <div class="row2 reveal">
+          <div class="field"><label for="company">회사 · 기관명<i>*</i></label><input type="text" id="company" name="company" placeholder="(주)워드캣"><p class="err">회사 또는 기관명을 입력해 주세요.</p></div>
+          <div class="field"><label for="name">담당자명<i>*</i></label><input type="text" id="name" name="name" placeholder="홍길동 / 마케팅팀 과장"><p class="err">담당자명을 입력해 주세요.</p></div>
+        </div>
+        <div class="row2 reveal">
+          <div class="field"><label for="phone">연락처<i>*</i></label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000"><p class="err">올바른 연락처를 입력해 주세요.</p></div>
+          <div class="field"><label for="email">이메일<i>*</i></label><input type="email" id="email" name="email" placeholder="name@company.com"><p class="err">올바른 이메일 주소를 입력해 주세요.</p></div>
+        </div>
+        <div class="row2 reveal">
+          <div class="field"><label for="budget">예상 예산</label>
+            <select id="budget" name="budget">
+              <option value="">선택해 주세요</option>
+              <option>1,000만원 미만</option><option>1,000만 ~ 3,000만원</option><option>3,000만 ~ 5,000만원</option><option>5,000만 ~ 1억원</option><option>1억원 이상</option><option>미정 / 협의</option>
+            </select></div>
+          <div class="field"><label for="schedule">희망 일정</label><input type="text" id="schedule" name="schedule" placeholder="예) 2026년 12월 중순"></div>
+        </div>
+
+        <div class="field reveal">
+          <label for="message">문의 내용<i>*</i></label>
+          <textarea id="message" name="message" placeholder="프로젝트 목적, 규모(참석 인원 등), 필요한 서비스를 자유롭게 적어주세요."></textarea>
+          <p class="err">문의 내용을 10자 이상 입력해 주세요.</p>
+        </div>
+
+        <div class="field reveal">
+          <span class="lbl">첨부파일</span>
+          <label class="file-box"><input type="file" name="file"><b>파일 선택</b><span class="file-name">기획안, RFP 등 참고 파일 (최대 20MB)</span></label>
+        </div>
+
+        <div class="agree reveal">
+          수집 항목: 회사명, 담당자명, 연락처, 이메일 · 이용 목적: 문의 응대 및 상담 · 보유 기간: 상담 완료 후 1년
+          <label><input type="checkbox" name="agree"> 개인정보 수집 및 이용에 동의합니다. (필수)</label>
+          <p class="err" style="color:#E5484D;font-size:13px;margin-top:6px">개인정보 수집 및 이용에 동의해 주세요.</p>
+        </div>
+
+        <button type="submit" class="btn-submit reveal">문의 보내기</button>
+      </form>
+
+      <div class="form-done">
+        <div class="ic">✓</div>
+        <h3>문의가 접수되었습니다.</h3>
+        <p>소중한 문의 감사드립니다.<br>영업일 기준 1~2일 이내에 담당자가 연락드리겠습니다.</p>
+        <a href="index.html" class="btn-line" style="margin-top:36px">HOME →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="logo"><img src="assets/logo.png" alt="WORDCAT"></a>
+        <div class="footer-info">
+          <span>(주)워드캣</span><span>대표 OOO</span><span>사업자등록번호 000-00-00000</span><br>
+          <span>서울특별시 금천구 가산디지털1로 OO, OOO호</span><span>T. 02-000-0000</span><span>E. contact@wordcat.co.kr</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <ul><h5>COMPANY</h5><li><a href="about.html">회사소개</a></li><li><a href="works.html">포트폴리오</a></li><li><a href="contact.html">문의하기</a></li></ul>
+        <ul><h5>BUSINESS</h5><li><a href="imc.html">IMC</a></li><li><a href="mice.html">MICE</a></li><li><a href="translation.html">통번역</a></li></ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 WORDCAT Co., Ltd. All rights reserved.</span>
+      <a href="#">개인정보처리방침</a>
+    </div>
+  </div>
+</footer>
+
+<button class="top-btn" aria-label="맨 위로">TOP</button>
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Files that must not be uploaded to the Cloudflare production site
+.git
+.github
+.claude
+.gitignore
+.assetsignore
+.nojekyll
+.credentials_and_repos
+node_modules
+tools
+wrangler.jsonc
+README.md
+CLAUDE.md

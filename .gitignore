@@ -1,0 +1,4 @@
+.credentials_and_repos
+node_modules/
+.wrangler/
+.claude/settings.json

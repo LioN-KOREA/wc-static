@@ -1,0 +1,10 @@
+{
+  // Cloudflare Workers (static assets) - production deployment of the 'main' branch.
+  // Deployed automatically by .github/workflows/deploy-production.yml
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "wordcat-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "."
+  }
+}
