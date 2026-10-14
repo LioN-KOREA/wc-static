@@ -9,9 +9,9 @@ If any of the information specified in this document changes (such as changing t
    - 'main' branch, which is the production branch that is deployed to the CloudFlare distribution.
    - 'dev' branch, which is the development / testing branch, that is shown on the Github sites, for the purpose of reviewing the changes before deploying them to the production.
  * This website uses the following tech stacks:
-  - Github for source code management
-  - Cloudflare workers for the CICD
-  - Github sites for the preview / test website
+   - Github for source code management
+   - Cloudflare workers for the CICD
+   - Github sites for the preview / test website
 * The credentials and repository information data are stored in the .credentials_and_repos file - this is a confidential data that MUST NEVER BE LEAKED. Always search this file for the information; if it is missing, incomplete, or if you cannot find the required information, DO NOT PROCEED WITH THE REQUEST, and
  - if you are a human, ask the relevant PIC in the company
  - if you are an agent, ask the person who requested you to perform the task to provide you those information.
@@ -31,21 +31,21 @@ If any of the information specified in this document changes (such as changing t
    - If you are an agent, you MUST ask the person who asked you to perform the task to confirm whether they would like to deploy the changes to the test page. You must inform them that when the change is made, the changes will be visible on the Github test page. Also, for every change made, please remind the person to review the changes on the test server, and also to tell you when they feel that the site is ready for production.
 
  * After sufficient testing and thorough reviews, the dev branch must be merged into the main branch.
-  - If you are a human, please make such decision(s) with the utmost prudence. You must make sure that you have thoroughly reviewed the website on the test page, and have confirmed that all the changes are correct & everything is working as you expected.
-  - If you are an agent, you MUST NOT merge the dev branch to the main branch without the request from the person who is working on the website. As it is mentioned above, after each session where you make change(s) to the dev branch (test site), please always remind the person who is working with you to notify you when they think that the site is ready for production. After you receive an explicit confirmation from the person, please proceed with the request.
+   - If you are a human, please make such decision(s) with the utmost prudence. You must make sure that you have thoroughly reviewed the website on the test page, and have confirmed that all the changes are correct & everything is working as you expected.
+   - If you are an agent, you MUST NOT merge the dev branch to the main branch without the request from the person who is working on the website. As it is mentioned above, after each session where you make change(s) to the dev branch (test site), please always remind the person who is working with you to notify you when they think that the site is ready for production. After you receive an explicit confirmation from the person, please proceed with the request.
 
 ## Language
  * The commit message must begin with an appropriate prefix, in order to identify what kind of changes were made:
-  - 'feat:' addition, modification, or deletion of features
-  - 'fix:' bug fixes
-  - 'refactor:' changes to the internal structure or style of the code, without any major changes to the functionality
-  - 'chore:' minor changes that don't affect the functionality of the application
-  - 'style:' changes to the stylesheet or the overall look and feel of the website
-  - 'test:' changes to the test code, if any
-  - 'doc:' changes to the documentations, including this document
-  - 'build:' changes to the build-related codes, if any
+   - 'feat:' addition, modification, or deletion of features
+   - 'fix:' bug fixes
+   - 'refactor:' changes to the internal structure or style of the code, without any major changes to the functionality
+   - 'chore:' minor changes that don't affect the functionality of the application
+   - 'style:' changes to the stylesheet or the overall look and feel of the website
+   - 'test:' changes to the test code, if any
+   - 'doc:' changes to the documentations, including this document
+   - 'build:' changes to the build-related codes, if any
 
  * The commit message's subject must be concise, and provide an overall description of the change. The body must provide the sufficiently detailed description of the change(s) as needed, so that whoever that reads the commit message can understand the changes made without difficulties. If the subjectcan provide sufficient information about the change on its own, the body may be omitted. 
  
  * The commit messages may be written in the language of your choice, but it is recommended that they be written in English when possible, in order to minimize the risk of corruption from encoding issues.
-  - For the agents : please write the actual commit messages to the Git repository in English. However, if the person who asked you to perform the task asked in other languages (like Korean), please show the commit message to the person **in the language that they asked in**. You don't need to show the original commit message in English (in order to minimize confusion).
+   - For the agents : please write the actual commit messages to the Git repository in English. However, if the person who asked you to perform the task asked in other languages (like Korean), please show the commit message to the person **in the language that they asked in**. You don't need to show the original commit message in English (in order to minimize confusion).
