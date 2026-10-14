@@ -46,11 +46,6 @@ document.querySelectorAll('.filters button').forEach(btn => {
   });
 });
 
-// Work cards without their own link (main page) open the detail page
-document.querySelectorAll('.work').forEach(w => {
-  if (!w.querySelector('a')) w.addEventListener('click', () => { location.href = 'work-detail.html'; });
-});
-
 // Sub tabs: highlight the section currently in view (anchor tabs only)
 const anchorTabs = [...document.querySelectorAll('.sub-tabs a[href^="#"]')];
 if (anchorTabs.length) {
@@ -62,23 +57,10 @@ if (anchorTabs.length) {
   anchorTabs.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
 }
 
-// Contact form (front-end only: validation + success screen)
-const form = document.querySelector('#contactForm');
-if (form) {
-  const preset = new URLSearchParams(location.search).get('type');
-  const presetInput = preset && form.querySelector(`input[name=type][value="${CSS.escape(preset)}"]`);
-  if (presetInput) presetInput.checked = true;
-  const fileInput = form.querySelector('input[type=file]');
-  fileInput.addEventListener('change', () => {
-    form.querySelector('.file-name').textContent = fileInput.files[0] ? fileInput.files[0].name : '기획안, RFP 등 참고 파일 (최대 20MB)';
-  });
-  const rules = {
-    company: v => v.trim() !== '',
-    name: v => v.trim() !== '',
-    phone: v => /^[0-9\-\s]{9,}$/.test(v.trim()),
-    email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
-    message: v => v.trim().length >= 10,
-  };
+// Forms (front-end only: validation + success screen)
+const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+const filled = v => v.trim() !== '';
+const setupForm = (form, rules) => {
   form.addEventListener('submit', e => {
     e.preventDefault();
     let firstBad = null;
@@ -98,7 +80,29 @@ if (form) {
     document.querySelector('.form-done').classList.add('show');
     scrollTo({ top: document.querySelector('.form-done').offsetTop - 150, behavior: 'smooth' });
   });
+};
+
+const form = document.querySelector('#contactForm');
+if (form) {
+  const preset = new URLSearchParams(location.search).get('type');
+  const presetInput = preset && form.querySelector(`input[name=type][value="${CSS.escape(preset)}"]`);
+  if (presetInput) presetInput.checked = true;
+  const fileInput = form.querySelector('input[type=file]');
+  fileInput.addEventListener('change', () => {
+    form.querySelector('.file-name').textContent = fileInput.files[0] ? fileInput.files[0].name : '기획안, RFP 등 참고 파일 (최대 20MB)';
+  });
+  setupForm(form, {
+    company: filled,
+    name: filled,
+    phone: v => /^[0-9\-\s]{9,}$/.test(v.trim()),
+    email: isEmail,
+    message: v => v.trim().length >= 10,
+  });
 }
+
+// Creators network join form (recruit page)
+const joinForm = document.querySelector('#joinForm');
+if (joinForm) setupForm(joinForm, { name: filled, email: isEmail, portfolio: filled });
 
 // Hero particle network
 const canvas = document.querySelector('.hero canvas');
