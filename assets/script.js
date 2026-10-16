@@ -169,6 +169,22 @@ if (!document.querySelector('#contactForm')) {
   setupForm(dlg.querySelector('.qi-form'), quickRules);
 }
 
+// Promo popup (index): opens on load; closing it hides it for 1 day, like the popup on wordcat.co.kr
+const promo = document.querySelector('dialog.promo');
+if (promo) {
+  const KEY = 'wc-promo-voucher-hidden-until';
+  let hiddenUntil = 0;
+  try { hiddenUntil = +localStorage.getItem(KEY) || 0; } catch (e) {}
+  const close = () => {
+    promo.close();
+    try { localStorage.setItem(KEY, Date.now() + 24 * 60 * 60 * 1000); } catch (e) {}
+  };
+  promo.querySelector('.promo-close').addEventListener('click', close);
+  promo.addEventListener('click', e => { if (e.target === promo) close(); }); // click on the backdrop
+  promo.addEventListener('cancel', e => { e.preventDefault(); close(); });  // Esc key
+  if (Date.now() > hiddenUntil) promo.showModal();
+}
+
 // Hero particle network
 const canvas = document.querySelector('.hero canvas');
 if (canvas) {
