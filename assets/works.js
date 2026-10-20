@@ -48,49 +48,59 @@ const WORKS = [
   { id: 'kipi-2021', cat: 'translation', client: '2021년 한국특허정보원', title: '2022년 기계번역 품질평가 용역사업' },
   { id: 'kawf', cat: 'mice', client: '한국예술인복지재단', title: '2024년 예술인파견지원-예술로 사업 교육 및 행사 기획·운영 용역' },
 ];
-const WORK_CAT = { imc: 'IMC', mice: 'MICE', translation: 'TRANSLATION' };
+// Texts come from the language file (assets/texts_<locale>.json): js.cat_*, projects.<id>.title / .client.
+// The values in WORKS above are the Korean fallback.
+const tr = (key, fallback) => (window.I18N ? I18N.t(key, fallback) : fallback);
+const workCat = w => tr(`js.cat_${w.cat}`, { imc: 'IMC', mice: 'MICE', translation: '통번역' }[w.cat]);
+const workTitle = w => tr(`projects.${w.id}.title`, w.title);
+const workClient = w => tr(`projects.${w.id}.client`, w.client);
 const workImg = w => `assets/img/works/${w.id}.jpg`;
 const workUrl = w => `work-detail.html?id=${w.id}`;
-const workName = w => w.title || w.client;
+const workName = w => workTitle(w) || workClient(w);
 const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const range = n => Array.from({ length: n || 0 }, (_, i) => i + 1);
 
-// Works grid: <div class="works-grid" data-works="all"> or data-works="6" (first N)
-document.querySelectorAll('[data-works]').forEach(grid => {
-  const n = grid.dataset.works === 'all' ? WORKS.length : +grid.dataset.works;
-  grid.innerHTML = WORKS.slice(0, n).map((w, i) => `
+const renderWorks = () => {
+  // Works grid: <div class="works-grid" data-works="all"> or data-works="6" (first N)
+  document.querySelectorAll('[data-works]').forEach(grid => {
+    const n = grid.dataset.works === 'all' ? WORKS.length : +grid.dataset.works;
+    grid.innerHTML = WORKS.slice(0, n).map((w, i) => `
     <article class="work reveal${['', ' d1', ' d2'][i % 3]}" data-cat="${w.cat}"><a href="${workUrl(w)}">
-      <div class="thumb"><img src="${workImg(w)}" alt="${esc(workName(w))}" loading="lazy"><span class="view">VIEW</span></div>
-      <div class="meta"><span class="cat">${WORK_CAT[w.cat]}</span></div>
-      <h4>${esc(workName(w))}</h4>${w.title ? `
-      <p class="client">${esc(w.client)}</p>` : ''}</a></article>`).join('');
-  const count = document.querySelector('.works-count b');
-  if (count) count.textContent = n;
-});
-
-// Detail page
-const wd = document.querySelector('[data-work-detail]');
-if (wd) {
-  const id = new URLSearchParams(location.search).get('id');
-  const i = Math.max(0, WORKS.findIndex(w => w.id === id));
-  const w = WORKS[i], prev = WORKS[(i - 1 + WORKS.length) % WORKS.length], next = WORKS[(i + 1) % WORKS.length];
-  const hasGallery = w.photos || w.designs;
-  document.title = `${workName(w)} | WORKS | 워드캣`;
-  wd.querySelectorAll('[data-f]').forEach(el => {
-    const f = el.dataset.f;
-    if (f === 'cat') el.textContent = WORK_CAT[w.cat];
-    else if (f === 'client') el.textContent = w.client;
-    else if (f === 'name') el.textContent = workName(w);
-    else if (f === 'crumb') el.textContent = `HOME / WORKS / ${WORK_CAT[w.cat]}`;
-    else if (f === 'cover') el.hidden = !!hasGallery;
-    else if (f === 'img') { el.src = workImg(w); el.alt = workName(w); }
-    else if (f === 'gallery') {
-      el.hidden = !hasGallery;
-      const group = (label, kind, n) => n ? `<div class="wd-gallery"><h3>${label}</h3><div class="wd-gallery-grid">${range(n).map(k =>
-        `<figure><img src="assets/img/works/${w.id}-${kind}-${k}.jpg" alt="${esc(workName(w))} ${label} ${k}" loading="lazy"></figure>`).join('')}</div></div>` : '';
-      el.innerHTML = group('PHOTO', 'photo', w.photos) + group('DESIGN', 'design', w.designs);
-    }
-    else if (f === 'prev') { el.href = workUrl(prev); el.lastChild.textContent = workName(prev); }
-    else if (f === 'next') { el.href = workUrl(next); el.lastChild.textContent = workName(next); }
+      <div class="thumb"><img src="${workImg(w)}" alt="${esc(workName(w))}" loading="lazy"><span class="view">${tr('js.view', 'VIEW')}</span></div>
+      <div class="meta"><span class="cat">${workCat(w)}</span></div>
+      <h4>${esc(workName(w))}</h4>${workTitle(w) ? `
+      <p class="client">${esc(workClient(w))}</p>` : ''}</a></article>`).join('');
+    // the cards are added after the page scripts ran: register them with the scroll reveal (script.js)
+    grid.querySelectorAll('.reveal').forEach(el => (typeof io !== 'undefined' ? io.observe(el) : el.classList.add('in')));
+    const count = document.querySelector('.works-count b');
+    if (count) count.textContent = n;
   });
-}
+
+  // Detail page
+  const wd = document.querySelector('[data-work-detail]');
+  if (wd) {
+    const id = new URLSearchParams(location.search).get('id');
+    const i = Math.max(0, WORKS.findIndex(w => w.id === id));
+    const w = WORKS[i], prev = WORKS[(i - 1 + WORKS.length) % WORKS.length], next = WORKS[(i + 1) % WORKS.length];
+    const hasGallery = w.photos || w.designs;
+    document.title = `${workName(w)} | ${tr('js.detail_title_suffix', '실적 | 워드캣')}`;
+    wd.querySelectorAll('[data-f]').forEach(el => {
+      const f = el.dataset.f;
+      if (f === 'cat') el.textContent = workCat(w);
+      else if (f === 'client') el.textContent = workClient(w);
+      else if (f === 'name') el.textContent = workName(w);
+      else if (f === 'crumb') el.textContent = `${tr('js.crumb_works', '홈 / 실적')} / ${workCat(w)}`;
+      else if (f === 'cover') el.hidden = !!hasGallery;
+      else if (f === 'img') { el.src = workImg(w); el.alt = workName(w); }
+      else if (f === 'gallery') {
+        el.hidden = !hasGallery;
+        const group = (label, kind, n) => n ? `<div class="wd-gallery"><h3>${label}</h3><div class="wd-gallery-grid">${range(n).map(k =>
+          `<figure><img src="assets/img/works/${w.id}-${kind}-${k}.jpg" alt="${esc(workName(w))} ${label} ${k}" loading="lazy"></figure>`).join('')}</div></div>` : '';
+        el.innerHTML = group('PHOTO', 'photo', w.photos) + group('DESIGN', 'design', w.designs);
+      }
+      else if (f === 'prev') { el.href = workUrl(prev); el.lastChild.textContent = workName(prev); }
+      else if (f === 'next') { el.href = workUrl(next); el.lastChild.textContent = workName(next); }
+    });
+  }
+};
+if (window.I18N) I18N.ready.then(renderWorks); else renderWorks();

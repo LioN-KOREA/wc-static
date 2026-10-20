@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WORKS | 워드캣</title>
+<title data-i18n="works.title">실적 | 워드캣</title>
 <link rel="stylesheet" href="assets/style.css">
+<script src="assets/i18n.js"></script>
 </head>
 <body>
 
@@ -12,39 +13,39 @@
   <div class="container">
     <a href="index.html" class="logo"><img src="assets/logo.png" alt="WORDCAT"></a>
     <nav class="gnb">
-      <a href="about.html">ABOUT</a>
+      <a href="about.html" data-i18n="common.a_1">소개</a>
       <div class="gnb-group">
-        <a href="imc.html" aria-haspopup="true">BUSINESS</a>
-        <div class="gnb-sub"><a href="imc.html">IMC<small>통합마케팅</small></a><a href="mice.html">MICE<small>마이스</small></a><a href="translation.html">TRANSLATION<small>통번역</small></a></div>
+        <a href="imc.html" aria-haspopup="true" data-i18n="common.a_2">사업분야</a>
+        <div class="gnb-sub"><a href="imc.html" data-i18n="common.a_3">IMC<small>통합마케팅</small></a><a href="mice.html" data-i18n="common.a_4">MICE<small>마이스</small></a><a href="translation.html" data-i18n="common.a_5">통번역</a></div>
       </div>
-      <a href="works.html" class="active">WORKS</a>
+      <a href="works.html" class="active" data-i18n="common.a_6">실적</a>
       <div class="gnb-group">
-        <a href="contact.html" aria-haspopup="true">CONTACT</a>
-        <div class="gnb-sub"><a href="contact.html">INQUIRY<small>문의하기</small></a><a href="recruit.html">RECRUIT<small>채용</small></a></div>
+        <a href="contact.html" aria-haspopup="true" data-i18n="common.a_7">문의</a>
+        <div class="gnb-sub"><a href="contact.html" data-i18n="common.a_8">문의하기</a><a href="recruit.html" data-i18n="common.a_9">채용</a></div>
       </div>
     </nav>
     <div class="header-right">
-      <a href="contact.html" class="btn-contact">문의하기</a>
-      <button class="menu-btn" aria-label="메뉴"><span></span><span></span><span></span></button>
+      <a href="contact.html" class="btn-contact" data-i18n="common.a_10">문의하기</a>
+      <button class="menu-btn" aria-label="메뉴" data-i18n-attr="aria-label:common.arialabel_11"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 <nav class="mobile-menu">
-  <a href="about.html">ABOUT<small>회사소개</small></a>
-  <a href="imc.html">IMC<small>통합마케팅</small></a>
-  <a href="mice.html">MICE<small>마이스</small></a>
-  <a href="translation.html">TRANSLATION<small>통번역</small></a>
-  <a href="works.html">WORKS<small>포트폴리오</small></a>
-  <a href="recruit.html">RECRUIT<small>채용 · 크리에이터</small></a>
-  <a href="contact.html">CONTACT<small>문의하기</small></a>
-  <div class="m-contact">T. 02-2135-8332<br>E. wcat@wordcat.co.kr</div>
+  <a href="about.html" data-i18n="common.a_12">소개</a>
+  <a href="imc.html" data-i18n="common.a_3">IMC<small>통합마케팅</small></a>
+  <a href="mice.html" data-i18n="common.a_4">MICE<small>마이스</small></a>
+  <a href="translation.html" data-i18n="common.a_5">통번역</a>
+  <a href="works.html" data-i18n="common.a_13">실적</a>
+  <a href="recruit.html" data-i18n="common.a_14">채용<small>크리에이터</small></a>
+  <a href="contact.html" data-i18n="common.a_15">문의</a>
+  <div class="m-contact" data-i18n="common.div_16">T. 02-2135-8332<br>E. wcat@wordcat.co.kr</div>
 </nav>
 
 <section class="sub-hero plain">
   <div class="container">
-    <p class="breadcrumb reveal">HOME / WORKS</p>
-    <h1 class="reveal d1">WORKS</h1>
-    <p class="lead reveal d2">워드캣이 고객과 함께 만들어 온 프로젝트입니다.</p>
+    <p class="breadcrumb reveal" data-i18n="works.p_1">홈 / 실적</p>
+    <h1 class="reveal d1" data-i18n="works.h1_2">실적</h1>
+    <p class="lead reveal d2" data-i18n="works.p_3">워드캣이 고객과 함께 만들어 온 프로젝트입니다.</p>
   </div>
 </section>
 
@@ -52,12 +53,12 @@
   <div class="container">
     <div class="works-toolbar">
       <div class="filters reveal">
-        <button class="on" data-filter="all">ALL</button>
-        <button data-filter="imc">IMC</button>
-        <button data-filter="mice">MICE</button>
-        <button data-filter="translation">TRANSLATION</button>
+        <button class="on" data-filter="all" data-i18n="works.button_4">전체</button>
+        <button data-filter="imc" data-i18n="works.button_5">IMC</button>
+        <button data-filter="mice" data-i18n="works.button_6">MICE</button>
+        <button data-filter="translation" data-i18n="works.button_7">통번역</button>
       </div>
-      <p class="works-count reveal">총 <b>0</b>개의 프로젝트</p>
+      <p class="works-count reveal" data-i18n="works.p_8">총 <b>0</b>개의 프로젝트</p>
     </div>
 
     <div class="works-grid" data-works="all"></div>
@@ -66,9 +67,9 @@
 
 <section class="cta">
   <div class="container">
-    <h2 class="reveal">다음 포트폴리오의 주인공이<br>되어주세요.</h2>
+    <h2 class="reveal" data-i18n="works.h2_9">다음 포트폴리오의 주인공이<br>되어주세요.</h2>
     <div class="hero-btns reveal d1">
-      <a href="contact.html" class="solid">프로젝트 문의하기 →</a>
+      <a href="contact.html" class="solid" data-i18n="works.a_10">프로젝트 문의하기 →</a>
     </div>
   </div>
 </section>
@@ -79,23 +80,23 @@
       <div>
         <a href="index.html" class="logo"><img src="assets/logo.png" alt="WORDCAT"></a>
         <div class="footer-info">
-          <span>(주)워드캣</span><span>대표이사 이장석, 김준희</span><span>사업자등록번호 150-81-01259</span><span>개인정보보호 책임자 이장석</span><br>
-          <span>서울특별시 금천구 디지털로 178, A동 5층 502, 503, 504호 (가산 퍼블릭)</span><span>T. 02-2135-8332</span><span>E. wcat@wordcat.co.kr</span>
+          <span data-i18n="common.span_17">(주)워드캣</span><span data-i18n="common.span_18">대표이사 이장석, 김준희</span><span data-i18n="common.span_19">사업자등록번호 150-81-01259</span><span data-i18n="common.span_20">개인정보보호 책임자 이장석</span><br>
+          <span data-i18n="common.span_21">서울특별시 금천구 디지털로 178, A동 5층 502, 503, 504호 (가산 퍼블릭)</span><span data-i18n="common.span_22">T. 02-2135-8332</span><span data-i18n="common.span_23">E. wcat@wordcat.co.kr</span>
         </div>
       </div>
       <div class="footer-links">
-        <ul><h5>COMPANY</h5><li><a href="about.html">회사소개</a></li><li><a href="works.html">포트폴리오</a></li><li><a href="recruit.html">채용</a></li><li><a href="contact.html">문의하기</a></li></ul>
-        <ul><h5>BUSINESS</h5><li><a href="imc.html">IMC</a></li><li><a href="mice.html">MICE</a></li><li><a href="translation.html">통번역</a></li></ul>
+        <ul><h5>COMPANY</h5><li><a href="about.html" data-i18n="common.a_24">회사소개</a></li><li><a href="works.html" data-i18n="common.a_25">실적</a></li><li><a href="recruit.html" data-i18n="common.a_26">채용</a></li><li><a href="contact.html" data-i18n="common.a_10">문의하기</a></li></ul>
+        <ul><h5>BUSINESS</h5><li><a href="imc.html" data-i18n="common.a_27">IMC</a></li><li><a href="mice.html" data-i18n="common.a_28">MICE</a></li><li><a href="translation.html" data-i18n="common.a_29">통번역</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 WORDCAT Co., Ltd. All rights reserved.</span>
-      <a href="#">개인정보처리방침</a>
+      <span data-i18n="common.span_30">© 2026 WORDCAT Co., Ltd. All rights reserved.</span>
+      <a href="#" data-i18n="common.a_31">개인정보처리방침</a>
     </div>
   </div>
 </footer>
 
-<button class="top-btn" aria-label="맨 위로">TOP</button>
+<button class="top-btn" aria-label="맨 위로" data-i18n="works.button_12" data-i18n-attr="aria-label:works.arialabel_11">TOP</button>
 <script src="assets/works.js"></script>
 <script src="assets/script.js"></script>
 </body>
