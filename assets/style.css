@@ -178,7 +178,8 @@ section { padding: 140px 0; }
 .work .meta { display: flex; gap: 10px; align-items: center; margin-top: 20px; }
 .work .cat { font-family: var(--en); font-size: 12px; font-weight: 700; color: var(--brand); padding: 4px 10px; border-radius: 4px; background: var(--brand-soft); }
 .work .client { font-size: 14px; color: var(--muted); }
-.work h4 { font-size: 20px; font-weight: 700; margin-top: 8px; }
+.work h4 { font-size: 20px; font-weight: 700; margin-top: 8px; line-height: 1.45; word-break: keep-all; }
+.work p.client { margin-top: 6px; } /* card order: category -> project name -> client */
 .works-more { text-align: center; margin-top: 70px; }
 
 /* ---------- Performance ---------- */
