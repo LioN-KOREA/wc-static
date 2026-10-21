@@ -12,8 +12,8 @@
 ## 구조
 - 정적 HTML/CSS/JS, 빌드 도구 없음. 공통 스타일 `assets/style.css`, 공통 동작 `assets/script.js`
 - 페이지: index, about, imc, mice, translation, works, work-detail, recruit, contact
-- 상단 메뉴: ABOUT / BUSINESS(IMC·MICE·TRANSLATION 드롭다운) / WORKS / CONTACT(문의하기·채용 드롭다운). 모바일 메뉴는 각 항목을 그대로 개별 표시
-- 빠른 문의(플로팅 버튼 + 모달)는 `assets/script.js`에서 모든 페이지에 자동 삽입 (contact.html 제외) → 페이지별 HTML 수정 불필요. 홈 히어로 오른쪽의 견적 문의 카드(`data-quick-form`)도 같은 폼 템플릿 사용 (1100px 이하에서는 숨김)
+- 상단 메뉴: ABOUT / BUSINESS(IMC·MICE·TRANSLATION 드롭다운) / WORKS / RECRUIT / CONTACT. 모바일 메뉴는 IMC·MICE·TRANSLATION을 그대로 개별 표시
+- 빠른 문의(플로팅 버튼 + 모달)는 `assets/script.js`에서 모든 페이지에 자동 삽입 (contact.html 제외) → 페이지별 HTML 수정 불필요
 - 헤더·모바일 메뉴·푸터는 각 페이지에 복사되어 있음 → 메뉴를 바꾸면 9개 페이지 모두 수정해야 함
 - 포트폴리오는 `assets/works.js`의 `WORKS` 배열 하나로 관리 (index 6개, works 전체, work-detail.html?id=… 상세 모두 여기서 렌더링). 이미지는 `assets/img/works/<id>.jpg`
 - 이미지는 모두 `assets/img/` 로컬 파일 (현재 사이트 wordcat.co.kr에서 가져와 최적화)
@@ -21,7 +21,7 @@
 
 ## 아직 임시/미완성인 것
 - 서비스 설명·포트폴리오(고객사명+이미지)·회사 정보·채용/크리에이터 내용은 wordcat.co.kr에서 옮긴 실제 내용
-- 현재 사이트에 없어 예시로 남긴 것: 실적 숫자, 고객 후기, 인사말(대표 사진·서명 OOO), 비전, 전화·팩스 번호(02-000-0000), 포트폴리오 상세 설명(현재 사이트에 없음)
+- 현재 사이트에 없어 예시로 남긴 것: 실적 숫자, 고객 후기, 연혁, 조직도, 인사말(대표 사진·서명 OOO), 비전, 전화·팩스 번호(02-000-0000), 포트폴리오 상세 설명(현재 사이트에 없음)
 - 고객사 로고 대신 고객사 이름 텍스트로 표시 중
 - 문의 폼·빠른 문의·크리에이터 합류 폼은 화면 검증만 되고 실제 전송 없음 (`assets/script.js`의 TODO)
 - COMPANY FILE(회사소개서 PDF), 개인정보처리방침 페이지 미연결
