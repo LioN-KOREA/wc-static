@@ -46,15 +46,6 @@ section { padding: 140px 0; }
 .gnb a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; background: var(--brand); transition: width .3s; }
 .gnb a:hover::after, .gnb a.active::after { width: 100%; }
 .gnb a.active { color: var(--brand); }
-/* BUSINESS dropdown (IMC / MICE / TRANSLATION) */
-.gnb-group { position: relative; }
-.gnb-sub { position: absolute; left: 50%; top: 100%; min-width: 210px; padding: 10px; margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px rgba(10,34,54,.12); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: .25s; z-index: 110; }
-.gnb-sub::before { content: ''; position: absolute; left: 0; right: 0; top: -16px; height: 16px; } /* hover bridge */
-.gnb-group:hover .gnb-sub, .gnb-group:focus-within .gnb-sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.gnb .gnb-sub a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 14px; border-radius: 9px; font-size: 14px; }
-.gnb .gnb-sub a::after { display: none; }
-.gnb .gnb-sub a:hover, .gnb .gnb-sub a.active { background: var(--soft); color: var(--brand); }
-.gnb-sub small { font-family: 'Pretendard', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0; color: var(--muted); }
 .header-right { display: flex; align-items: center; gap: 20px; }
 .btn-contact {
   font-family: var(--en); font-weight: 700; font-size: 13px; letter-spacing: .06em;
@@ -552,39 +543,3 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 60px); }
   .strength, .role { padding: 34px 26px; }
   .office-grid { margin-top: 40px; }
 }
-
-/* =========================================================
-   Quick inquiry (빠른 문의): floating button + modal dialog
-   ========================================================= */
-.qi-fab { position: fixed; right: 30px; bottom: 30px; z-index: 95; display: inline-flex; align-items: center; gap: 8px; height: 54px; padding: 0 22px 0 18px; border-radius: 40px; background: var(--brand); color: #fff; font-weight: 700; font-size: 15px; box-shadow: 0 12px 30px rgba(21,158,190,.35); transition: .3s; }
-.qi-fab:hover { background: var(--navy); box-shadow: 0 12px 30px rgba(10,34,54,.3); transform: translateY(-2px); }
-body.has-qi .top-btn { bottom: 100px; }
-dialog.qi { margin: auto; width: min(560px, calc(100% - 32px)); max-height: calc(100dvh - 40px); padding: 0; border: 0; border-radius: 24px; color: var(--ink); box-shadow: 0 30px 80px rgba(10,34,54,.3); }
-dialog.qi::backdrop { background: rgba(7,26,42,.55); backdrop-filter: blur(2px); }
-dialog.qi[open] { animation: qi-in .3s ease; }
-@keyframes qi-in { from { opacity: 0; transform: translateY(16px); } }
-.qi-inner { position: relative; padding: 44px 40px 36px; }
-.qi-close { position: absolute; right: 18px; top: 16px; width: 40px; height: 40px; border-radius: 50%; font-size: 26px; line-height: 1; color: var(--muted); }
-.qi-close:hover { background: var(--soft); color: var(--ink); }
-.qi h3#qi-title { font-size: 28px; font-weight: 800; margin-top: 6px; }
-.qi-desc { color: var(--muted); font-size: 15px; margin: 10px 0 26px; }
-.qi .form { gap: 18px; }
-.qi .row2 { gap: 18px; }
-.qi .field > label { font-size: 14px; margin-bottom: 8px; }
-.qi .field textarea { min-height: 110px; }
-.qi .agree { padding: 16px 18px; font-size: 12px; }
-.qi .agree label { font-size: 14px; margin-top: 10px; }
-.qi-actions { display: flex; gap: 10px; align-items: stretch; }
-.qi-actions .btn-submit { flex: 1; margin: 0; }
-.qi-general { display: inline-flex; align-items: center; justify-content: center; padding: 0 22px; border: 1.5px solid var(--line); border-radius: 60px; font-weight: 700; font-size: 15px; white-space: nowrap; }
-.qi-general:hover { border-color: var(--ink); }
-.qi .form-done { padding: 40px 20px 10px; background: none; }
-@media (max-width: 768px) {
-  .qi-fab { right: 16px; bottom: 16px; height: 48px; padding: 0 18px 0 14px; font-size: 14px; }
-  body.has-qi .top-btn { bottom: 76px; }
-  .qi-inner { padding: 38px 22px 26px; }
-  .qi .row2 { grid-template-columns: 1fr; }
-  .qi-actions { flex-direction: column; }
-  .qi-general { padding: 14px 22px; }
-}
-.qi .btn-submit { padding: 17px; font-size: 16px; }
