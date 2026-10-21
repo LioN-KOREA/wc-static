@@ -14,7 +14,6 @@
 - 페이지: index, about, imc, mice, translation, works, work-detail, recruit, contact
 - 상단 메뉴: ABOUT / BUSINESS(IMC·MICE·TRANSLATION 드롭다운) / WORKS / CONTACT(문의하기·채용 드롭다운). 모바일 메뉴는 각 항목을 그대로 개별 표시
 - 빠른 문의(플로팅 버튼 + 모달)는 `assets/script.js`에서 모든 페이지에 자동 삽입 (contact.html 제외) → 페이지별 HTML 수정 불필요. 홈 히어로 오른쪽의 견적 문의 카드(`data-quick-form`)도 같은 폼 템플릿 사용 (1100px 이하에서는 숨김)
-- 홈(index) 수출바우처 팝업: `index.html`의 `<dialog class="promo">` (이미지 `assets/img/misc/voucher-popup.jpg`, 링크 wordcat-voucher.imweb.me). 닫으면 24시간 숨김(localStorage). 팝업을 내리려면 이 dialog를 삭제
 - 헤더·모바일 메뉴·푸터는 각 페이지에 복사되어 있음 → 메뉴를 바꾸면 9개 페이지 모두 수정해야 함
 - 포트폴리오는 `assets/works.js`의 `WORKS` 배열 하나로 관리 (index 6개, works 전체, work-detail.html?id=… 상세 모두 여기서 렌더링). 이미지는 `assets/img/works/<id>.jpg`
 - 이미지는 모두 `assets/img/` 로컬 파일 (현재 사이트 wordcat.co.kr에서 가져와 최적화)
