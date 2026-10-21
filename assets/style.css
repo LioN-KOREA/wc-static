@@ -47,11 +47,10 @@ section { padding: 140px 0; }
 .gnb a:hover::after, .gnb a.active::after { width: 100%; }
 .gnb a.active { color: var(--brand); }
 /* BUSINESS dropdown (IMC / MICE / TRANSLATION) */
-.gnb-group { position: relative; display: flex; } /* lay out BUSINESS like the other top-level items */
+.gnb-group { position: relative; }
 .gnb-sub { position: absolute; left: 50%; top: 100%; min-width: 210px; padding: 10px; margin-top: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 40px rgba(10,34,54,.12); opacity: 0; visibility: hidden; transform: translate(-50%, 6px); transition: .25s; z-index: 110; }
 .gnb-sub::before { content: ''; position: absolute; left: 0; right: 0; top: -16px; height: 16px; } /* hover bridge */
 .gnb-group:hover .gnb-sub, .gnb-group:focus-within .gnb-sub { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-.gnb-sub { display: flex; flex-direction: column; gap: 4px; }
 .gnb .gnb-sub a { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 14px; border-radius: 9px; font-size: 14px; }
 .gnb .gnb-sub a::after { display: none; }
 .gnb .gnb-sub a:hover, .gnb .gnb-sub a.active { background: var(--soft); color: var(--brand); }
