@@ -95,7 +95,7 @@ if (form) {
   setupForm(form, {
     company: filled,
     name: filled,
-    phone: v => /^[0-9\-\s+()]{9,}$/.test(v.trim()),
+    phone: v => /^[0-9\-\s]{9,}$/.test(v.trim()),
     email: isEmail,
     message: v => v.trim().length >= 10,
   });
@@ -108,71 +108,66 @@ if (joinForm) setupForm(joinForm, { name: filled, email: isEmail, portfolio: fil
 // Quick inquiry (빠른 문의): one form template, used by
 //  - the floating button + modal dialog (every page except contact.html)
 //  - the inline quote card in the home hero (<aside data-quick-form>)
-// Texts: "quick" section of assets/texts_<locale>.json (Korean fallback below).
-const q = (key, fallback) => (window.I18N ? I18N.t('quick.' + key, fallback) : fallback);
 const quickForm = (p, autofocus) => `
     <form class="form qi-form" novalidate>
-      <div class="field"><label for="${p}-name">${q('name_label', '회사명 / 담당자명')}<i>*</i></label><input type="text" id="${p}-name" name="name"${autofocus ? ' autofocus' : ''} placeholder="${q('name_ph', '(주)워드캣 / 홍길동')}" autocomplete="organization"><p class="err">${q('name_err', '회사명 또는 담당자명을 입력해 주세요.')}</p></div>
+      <div class="field"><label for="${p}-name">회사명 / 담당자명<i>*</i></label><input type="text" id="${p}-name" name="name"${autofocus ? ' autofocus' : ''} placeholder="(주)워드캣 / 홍길동" autocomplete="organization"><p class="err">회사명 또는 담당자명을 입력해 주세요.</p></div>
       <div class="row2">
-        <div class="field"><label for="${p}-phone">${q('phone_label', '연락처')}<i>*</i></label><input type="tel" id="${p}-phone" name="phone" placeholder="${q('phone_ph', '010-0000-0000')}" autocomplete="tel"><p class="err">${q('phone_err', '올바른 연락처를 입력해 주세요.')}</p></div>
-        <div class="field"><label for="${p}-email">${q('email_label', '이메일')}<i>*</i></label><input type="email" id="${p}-email" name="email" placeholder="${q('email_ph', 'name@company.com')}" autocomplete="email"><p class="err">${q('email_err', '올바른 이메일 주소를 입력해 주세요.')}</p></div>
+        <div class="field"><label for="${p}-phone">연락처<i>*</i></label><input type="tel" id="${p}-phone" name="phone" placeholder="010-0000-0000" autocomplete="tel"><p class="err">올바른 연락처를 입력해 주세요.</p></div>
+        <div class="field"><label for="${p}-email">이메일<i>*</i></label><input type="email" id="${p}-email" name="email" placeholder="name@company.com" autocomplete="email"><p class="err">올바른 이메일 주소를 입력해 주세요.</p></div>
       </div>
-      <div class="field"><label for="${p}-message">${q('msg_label', '문의 내용')}<i>*</i></label><textarea id="${p}-message" name="message" placeholder="${q('msg_ph', '필요한 서비스(IMC · MICE · 통번역 등)와 일정을 간단히 적어주세요.')}"></textarea><p class="err">${q('msg_err', '문의 내용을 10자 이상 입력해 주세요.')}</p></div>
+      <div class="field"><label for="${p}-message">문의 내용<i>*</i></label><textarea id="${p}-message" name="message" placeholder="필요한 서비스(IMC · MICE · 통번역 등)와 일정을 간단히 적어주세요."></textarea><p class="err">문의 내용을 10자 이상 입력해 주세요.</p></div>
       <div class="agree">
-        ${q('agree_text', '수집 항목: 회사명·담당자명, 연락처, 이메일 · 이용 목적: 문의 응대 · 보유 기간: 상담 완료 후 1년')}
-        <label><input type="checkbox" name="agree"> ${q('agree_label', '개인정보 수집 및 이용에 동의합니다. (필수)')}</label>
-        <p class="err" style="color:#E5484D;font-size:13px;margin-top:6px">${q('agree_err', '개인정보 수집 및 이용에 동의해 주세요.')}</p>
+        수집 항목: 회사명·담당자명, 연락처, 이메일 · 이용 목적: 문의 응대 · 보유 기간: 상담 완료 후 1년
+        <label><input type="checkbox" name="agree"> 개인정보 수집 및 이용에 동의합니다. (필수)</label>
+        <p class="err" style="color:#E5484D;font-size:13px;margin-top:6px">개인정보 수집 및 이용에 동의해 주세요.</p>
       </div>
       <div class="qi-actions">
-        <button type="submit" class="btn-submit">${q('submit', '빠른 문의 보내기')}</button>
-        <a href="contact.html" class="qi-general">${q('general', '일반문의 →')}</a>
+        <button type="submit" class="btn-submit">빠른 문의 보내기</button>
+        <a href="contact.html" class="qi-general">일반문의 →</a>
       </div>
     </form>
     <div class="form-done">
       <div class="ic">✓</div>
-      <h3>${q('done_title', '문의가 접수되었습니다.')}</h3>
-      <p>${q('done_text', '영업일 기준 1~2일 이내에 담당자가 연락드리겠습니다.')}</p>
+      <h3>문의가 접수되었습니다.</h3>
+      <p>영업일 기준 1~2일 이내에 담당자가 연락드리겠습니다.</p>
     </div>`;
 const quickRules = {
   name: filled,
-  phone: v => /^[0-9\-\s+()]{9,}$/.test(v.trim()),
+  phone: v => /^[0-9\-\s]{9,}$/.test(v.trim()),
   email: isEmail,
   message: v => v.trim().length >= 10,
 };
 
-const initQuick = () => {
-  const heroQuick = document.querySelector('[data-quick-form]');
-  if (heroQuick) {
-    heroQuick.innerHTML = `
+const heroQuick = document.querySelector('[data-quick-form]');
+if (heroQuick) {
+  heroQuick.innerHTML = `
     <span class="label">QUICK QUOTE</span>
-    <h3>${q('hero_title', '견적 문의')}</h3>
-    <p class="qi-desc">${q('hero_desc', '연락처와 문의 내용만 남겨주시면 영업일 기준 1~2일 이내에 연락드립니다.')}</p>${quickForm('hq')}`;
-    setupForm(heroQuick.querySelector('.qi-form'), quickRules);
-  }
+    <h3>견적 문의</h3>
+    <p class="qi-desc">연락처와 문의 내용만 남겨주시면 영업일 기준 1~2일 이내에 연락드립니다.</p>${quickForm('hq')}`;
+  setupForm(heroQuick.querySelector('.qi-form'), quickRules);
+}
 
-  if (!document.querySelector('#contactForm')) {
-    document.body.insertAdjacentHTML('beforeend', `
+if (!document.querySelector('#contactForm')) {
+  document.body.insertAdjacentHTML('beforeend', `
 <button type="button" class="qi-fab" aria-haspopup="dialog">
   <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H8l-4 4V6a2 2 0 0 1 2-2zm3 6v2h2v-2H7zm4 0v2h2v-2h-2zm4 0v2h2v-2h-2z"/></svg>
-  <span>${q('fab', '빠른 문의')}</span>
+  <span>빠른 문의</span>
 </button>
 <dialog class="qi" aria-labelledby="qi-title">
   <div class="qi-inner">
-    <button type="button" class="qi-close" aria-label="${q('close', '닫기')}">×</button>
+    <button type="button" class="qi-close" aria-label="닫기">×</button>
     <span class="label">QUICK INQUIRY</span>
-    <h3 id="qi-title">${q('dialog_title', '빠른 문의')}</h3>
-    <p class="qi-desc">${q('dialog_desc', '연락처와 문의 내용만 남겨주시면<br>영업일 기준 1~2일 이내에 담당자가 연락드립니다.')}</p>${quickForm('qi', true)}
+    <h3 id="qi-title">빠른 문의</h3>
+    <p class="qi-desc">연락처와 문의 내용만 남겨주시면<br>영업일 기준 1~2일 이내에 담당자가 연락드립니다.</p>${quickForm('qi', true)}
   </div>
 </dialog>`);
-    const fab = document.querySelector('.qi-fab'), dlg = document.querySelector('dialog.qi');
-    document.body.classList.add('has-qi');
-    fab.addEventListener('click', () => dlg.showModal());
-    dlg.querySelector('.qi-close').addEventListener('click', () => dlg.close());
-    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); }); // click on the backdrop
-    setupForm(dlg.querySelector('.qi-form'), quickRules);
-  }
-};
-if (window.I18N) I18N.ready.then(initQuick); else initQuick();
+  const fab = document.querySelector('.qi-fab'), dlg = document.querySelector('dialog.qi');
+  document.body.classList.add('has-qi');
+  fab.addEventListener('click', () => dlg.showModal());
+  dlg.querySelector('.qi-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); }); // click on the backdrop
+  setupForm(dlg.querySelector('.qi-form'), quickRules);
+}
 
 // Promo popup (index): opens on load; closing it hides it for 1 day, like the popup on wordcat.co.kr
 const promo = document.querySelector('dialog.promo');
@@ -187,9 +182,7 @@ if (promo) {
   promo.querySelector('.promo-close').addEventListener('click', close);
   promo.addEventListener('click', e => { if (e.target === promo) close(); }); // click on the backdrop
   promo.addEventListener('cancel', e => { e.preventDefault(); close(); });  // Esc key
-  // Korean banner for a programme for Korean SMEs: shown on the Korean site only
-  const korean = !window.I18N || I18N.locale === 'ko-KR';
-  if (korean && Date.now() > hiddenUntil) promo.showModal();
+  if (Date.now() > hiddenUntil) promo.showModal();
 }
 
 // Hero particle network
