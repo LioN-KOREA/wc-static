@@ -2,3 +2,16 @@
 node_modules/
 .wrangler/
 .claude/settings.json
+
+# Internal documents and raw source material: never commit (the repository and both websites are public)
+data_for_*/
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.doc
+*.docx
+~$*
+Thumbs.db
+thumbs.db
+desktop.ini
