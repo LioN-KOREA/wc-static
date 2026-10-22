@@ -18,7 +18,7 @@ const WORKS = [
   { id: 'seoul-retech-2025', cat: 'imc', client: '서울특별시평생교육진흥원', title: '2025년 서울 리(Re)테크 사업 종합 홍보', images: 3 },
   { id: 'mofa-middle-east', cat: 'mice', client: '외교부', title: '서울 중동문제 국제회의', photos: 2, designs: 3 },
   { id: 'kisa-digital-2025', cat: 'imc', client: '한국인터넷진흥원', title: '2025년 기관 홍보 콘텐츠 제작 등 디지털 홍보 용역', images: 4 },
-  { id: 'asean-youth', cat: 'mice', client: '한-아세안센터', title: '2026 한-아세안 청년 네트워크 워크숍', photos: 2, designs: 1 },
+  { id: 'asean-youth', cat: 'mice', client: '한-아세안센터', title: '2026 한-아세안 청년 네트워크 워크숍', photos: 3 },
   { id: 'naacc-citizens-2025', cat: 'imc', client: '행정중심복합도시건설청', title: '2025년 국가상징구역 국민참여단 운영 용역', images: 4 },
   { id: 'kibo-ma', cat: 'mice', client: '기술보증기금', title: '기업승계 M&A 지원을 위한 간담회 등 인식확산', photos: 2, designs: 2 },
   { id: 'kom-overseas-2025', cat: 'imc', client: '한국한의약진흥원', title: '2025 한의약 콘텐츠 해외 홍보 용역', images: 4 },
