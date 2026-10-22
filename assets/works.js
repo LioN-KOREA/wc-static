@@ -6,9 +6,9 @@
 //   designs : number of DESIGN gallery images -> <id>-design-1.jpg ... (optional)
 //   images  : number of GALLERY images shown under the cover -> <id>-img-1.jpg ... (optional)
 const WORKS = [
-  { id: 'mofa-mekong', cat: 'mice', client: '외교부', title: '2026 제5차 한-메콩 유스그룹 워크숍', photos: 2, designs: 2 },
+  { id: 'mofa-mekong', cat: 'mice', client: '외교부', title: '2026 제5차 한-메콩 유스그룹 워크숍', photos: 3, designs: 1 },
   { id: 'cheonan-bread-2025', cat: 'imc', client: '충청남도 천안시', title: '2025년「빵의 도시 천안」온라인 홍보 용역', images: 3 },
-  { id: 'incheon-maritime', cat: 'mice', client: '국립인천해양박물관', title: '2026 국립인천해양박물관 그리스 국제학술대회', photos: 2, designs: 1 },
+  { id: 'incheon-maritime', cat: 'mice', client: '국립인천해양박물관', title: '2026 국립인천해양박물관 그리스 국제학술대회', photos: 3 },
   { id: 'kocca-pr-2025', cat: 'imc', client: '한국콘텐츠진흥원', title: '2025년 한국콘텐츠진흥원 기관 홍보 위탁용역', images: 4 },
   { id: 'nrc-korea-vietnam', cat: 'mice', client: '경제인문사회연구회', title: '2026 한-베 국제컨퍼런스', photos: 2, designs: 2 },
   { id: 'mofa-sns-2025', cat: 'imc', client: '외교부', title: '2025년 외교부 SNS 콘텐츠 제작 용역', images: 3 },
