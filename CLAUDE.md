@@ -14,7 +14,7 @@
 - 페이지: index, about, imc, mice, translation, works, work-detail, recruit, contact
 - 상단 메뉴: ABOUT / IMC / MICE / TRANSLATION / WORKS / RECRUIT / CONTACT
 - 헤더·모바일 메뉴·푸터는 각 페이지에 복사되어 있음 → 메뉴를 바꾸면 9개 페이지 모두 수정해야 함
-- 포트폴리오는 `assets/works.js`의 `WORKS` 배열 하나로 관리 (index 6개, works 전체, work-detail.html?id=… 상세 모두 여기서 렌더링). 이미지는 `assets/img/works/<id>.jpg`
+- 포트폴리오는 `assets/works.js`의 `WORKS` 배열 하나로 관리 (index 6개, works 전체, work-detail.html?id=… 상세 모두 여기서 렌더링). 이미지는 `assets/img/works/<id>.jpg`. 상세 페이지 갤러리: MICE는 `photos`/`designs`(`<id>-photo-N.jpg`, `<id>-design-N.jpg`), IMC는 대표 이미지(`<id>.jpg`)를 커버로 보여 주고 나머지는 `images`(`<id>-img-N.jpg`)
 - 이미지는 모두 `assets/img/` 로컬 파일 (현재 사이트 wordcat.co.kr에서 가져와 최적화)
 - 미리보기: `node tools/serve.js . 5173` → http://localhost:5173 (`.claude/launch.json`의 "wordcat")
 
