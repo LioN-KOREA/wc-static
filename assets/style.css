@@ -162,6 +162,7 @@ section { padding: 140px 0; }
 .work.hide { display: none; }
 .work .thumb { aspect-ratio: 4/3; border-radius: 18px; overflow: hidden; position: relative; background: var(--soft); }
 .work .thumb img { width: 100%; height: 100%; object-fit: contain; transition: transform .8s ease; } /* show the whole image (tall posters get side padding) */
+.work .thumb.reshape img { object-fit: cover; } /* works.js reshape: true -> fill the frame (may crop) */
 .work .thumb .view { position: absolute; inset: 0; background: rgba(21,158,190,.82); color: #fff; display: grid; place-items: center; font-family: var(--en); font-weight: 700; letter-spacing: .1em; opacity: 0; transition: .4s; }
 .work:hover .thumb img { transform: scale(1.04); }
 .work:hover .view { opacity: 1; }
