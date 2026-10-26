@@ -544,3 +544,6 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 60px); }
   .strength, .role { padding: 34px 26px; }
   .office-grid { margin-top: 40px; }
 }
+/* client logos in the partner band (clients without a logo stay as text) */
+.marquee-track span.logo { background: #fff; }
+.marquee-track span.logo img { display: block; max-height: 44px; max-width: 150px; width: auto; height: auto; object-fit: contain; }
