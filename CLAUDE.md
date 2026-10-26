@@ -12,7 +12,8 @@
 ## 구조
 - 정적 HTML/CSS/JS, 빌드 도구 없음. 공통 스타일 `assets/style.css`, 공통 동작 `assets/script.js`
 - 페이지: index, about, imc, mice, translation, works, work-detail, recruit, contact
-- 상단 메뉴: ABOUT / IMC / MICE / TRANSLATION / WORKS / RECRUIT / CONTACT
+- 상단 메뉴: ABOUT / IMC / MICE / TRANSLATION / WORKS / CONTACT
+- RECRUIT(채용) 페이지는 경영진 요청으로 임시 숨김: `recruit.html` 파일·이미지·스타일은 그대로 두고 다른 8개 페이지의 링크만 제거함 (상단 메뉴, 모바일 메뉴, 푸터 "채용"). 되살리려면 `recruit.html`에 남아 있는 메뉴·푸터 링크를 8개 페이지에 다시 넣으면 됨
 - 헤더·모바일 메뉴·푸터는 각 페이지에 복사되어 있음 → 메뉴를 바꾸면 9개 페이지 모두 수정해야 함
 - 포트폴리오는 `assets/works.js`의 `WORKS` 배열 하나로 관리 (index 6개, works 전체, work-detail.html?id=… 상세 모두 여기서 렌더링). 이미지는 `assets/img/works/<id>.jpg`. 상세 페이지 갤러리: MICE는 `photos`/`designs`(`<id>-photo-N.jpg`, `<id>-design-N.jpg`), IMC는 대표 이미지(`<id>.jpg`)를 커버로 보여 주고 나머지는 `images`(`<id>-img-N.jpg`). 카드 사진 표시: `reshape: true`는 프레임을 꽉 채움(잘릴 수 있음, MICE), `false`는 사진 전체를 프레임 안에 맞추고 남는 부분은 배경(IMC)
 - 이미지는 모두 `assets/img/` 로컬 파일 (현재 사이트 wordcat.co.kr에서 가져와 최적화)
