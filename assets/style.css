@@ -564,3 +564,11 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 60px); }
 .ci img { max-width: 82%; max-height: 52%; }
 .ci.white img { filter: brightness(0) opacity(.45); }
 .ci.white:hover img { filter: brightness(0); opacity: 1; }
+
+/* Client logos in two scrolling rows (logo style above stays: grayscale, color on hover) */
+.clients .marquee-track { list-style: none; margin: 0; padding: 0; }
+.clients .marquee:first-of-type { margin-top: 10px; }
+.marquee-track .ci { flex-shrink: 0; width: 200px; height: 84px; aspect-ratio: auto; padding: 0 18px; border: 1px solid var(--line); border-radius: 14px; }
+.marquee-track .ci img { max-width: 82%; max-height: 52%; }
+.clients .marquee:hover .marquee-track { animation-play-state: paused; } /* stop on hover so the colored logo can be seen */
+@media (max-width: 640px) { .marquee-track .ci { width: 160px; height: 70px; } }
