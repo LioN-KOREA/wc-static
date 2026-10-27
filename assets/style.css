@@ -567,7 +567,8 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 60px); }
 .clients .marquee-track { list-style: none; margin: 0; padding: 0; }
 .clients .marquee:first-of-type { margin-top: 10px; }
 .marquee-track .ci { flex-shrink: 0; width: 216px; height: 84px; aspect-ratio: auto; padding: 0 16px; border: 1px solid var(--line); border-radius: 14px; }
-/* --lw (set per logo in index.html) = display width that gives every logo about the same visible area, so wide and compact logos look equally big */
-.marquee-track .ci img { width: calc(var(--lw, 140) * 1px); height: auto; max-width: 100%; max-height: none; }
+/* Set per logo in index.html: --lw = display width so wide and compact logos look equally big;
+   --dx / --dy = small shift so the logo's visual weight (not its bounding box) sits in the middle of the tile */
+.marquee-track .ci img { width: calc(var(--lw, 140) * 1px); height: auto; max-width: 100%; max-height: none; transform: translate(var(--dx, 0%), var(--dy, 0%)); }
 .clients .marquee:hover .marquee-track { animation-play-state: paused; } /* stop on hover so a logo can be read */
 @media (max-width: 640px) { .marquee-track .ci { width: 176px; height: 68px; padding: 0 12px; } .marquee-track .ci img { width: calc(var(--lw, 140) * .8px); } }
