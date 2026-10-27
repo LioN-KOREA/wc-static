@@ -552,23 +552,22 @@ section[id] { scroll-margin-top: calc(var(--header-h) + 60px); }
 .ci-grid { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: 10px; }
 .ci { aspect-ratio: 16 / 9; display: grid; place-items: center; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; padding: 18px; transition: background .3s; }
 .ci.hide { display: none; }
-.ci img { max-width: 78%; max-height: 56%; object-fit: contain; filter: grayscale(1); opacity: .6; transition: .3s; }
+.ci img { max-width: 78%; max-height: 56%; object-fit: contain; }
 .ci-logo { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; line-height: 1.35; font-weight: 700; font-size: 15px; color: #9AA6B0; letter-spacing: -.02em; transition: .3s; }
 .ci-logo i { font-style: normal; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #C9D2D9; color: #fff; font-size: 15px; transition: .3s; }
 .ci:hover { background: var(--soft); }
-.ci:hover img { filter: none; opacity: 1; }
 .ci:hover .ci-logo { color: var(--navy); }
 .ci:hover .ci-logo i { background: var(--brand); }
 @media (max-width: 1024px) { .ci-grid { grid-template-columns: repeat(4, 1fr); } }
 @media (max-width: 640px) { .ci-grid { grid-template-columns: repeat(2, 1fr); } .ci-logo { font-size: 14px; } .ci-logo i { width: 28px; height: 28px; font-size: 13px; } }
 .ci img { max-width: 82%; max-height: 52%; }
-.ci.white img { filter: brightness(0) opacity(.45); }
-.ci.white:hover img { filter: brightness(0); opacity: 1; }
+.ci.white, .ci.white:hover { background: #37378C; border-color: #37378C; } /* white logo (한국예술인복지재단): shown on its own brand navy */
 
-/* Client logos in two scrolling rows (logo style above stays: grayscale, color on hover) */
+/* Client logos in two scrolling rows, in their original colors */
 .clients .marquee-track { list-style: none; margin: 0; padding: 0; }
 .clients .marquee:first-of-type { margin-top: 10px; }
-.marquee-track .ci { flex-shrink: 0; width: 200px; height: 84px; aspect-ratio: auto; padding: 0 18px; border: 1px solid var(--line); border-radius: 14px; }
-.marquee-track .ci img { max-width: 82%; max-height: 52%; }
-.clients .marquee:hover .marquee-track { animation-play-state: paused; } /* stop on hover so the colored logo can be seen */
-@media (max-width: 640px) { .marquee-track .ci { width: 160px; height: 70px; } }
+.marquee-track .ci { flex-shrink: 0; width: 216px; height: 84px; aspect-ratio: auto; padding: 0 16px; border: 1px solid var(--line); border-radius: 14px; }
+/* --lw (set per logo in index.html) = display width that gives every logo about the same visible area, so wide and compact logos look equally big */
+.marquee-track .ci img { width: calc(var(--lw, 140) * 1px); height: auto; max-width: 100%; max-height: none; }
+.clients .marquee:hover .marquee-track { animation-play-state: paused; } /* stop on hover so a logo can be read */
+@media (max-width: 640px) { .marquee-track .ci { width: 176px; height: 68px; padding: 0 12px; } .marquee-track .ci img { width: calc(var(--lw, 140) * .8px); } }
