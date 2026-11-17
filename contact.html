@@ -72,12 +72,12 @@
         </div>
 
         <div class="row2 reveal">
-          <div class="field"><label for="company">회사 · 기관명<i>*</i></label><input type="text" id="company" name="company" placeholder="(주)워드캣"><p class="err">회사 또는 기관명을 입력해 주세요.</p></div>
-          <div class="field"><label for="name">담당자명<i>*</i></label><input type="text" id="name" name="name" placeholder="홍길동 / 마케팅팀 과장"><p class="err">담당자명을 입력해 주세요.</p></div>
+          <div class="field"><label for="company">회사 · 기관명<i>*</i></label><input type="text" id="company" name="company" maxlength="200" placeholder="(주)워드캣"><p class="err">회사 또는 기관명을 입력해 주세요.</p></div>
+          <div class="field"><label for="name">담당자명<i>*</i></label><input type="text" id="name" name="name" maxlength="100" placeholder="홍길동 / 마케팅팀 과장"><p class="err">담당자명을 입력해 주세요.</p></div>
         </div>
         <div class="row2 reveal">
-          <div class="field"><label for="phone">연락처<i>*</i></label><input type="tel" id="phone" name="phone" placeholder="010-0000-0000"><p class="err">올바른 연락처를 입력해 주세요.</p></div>
-          <div class="field"><label for="email">이메일<i>*</i></label><input type="email" id="email" name="email" placeholder="name@company.com"><p class="err">올바른 이메일 주소를 입력해 주세요.</p></div>
+          <div class="field"><label for="phone">연락처<i>*</i></label><input type="tel" id="phone" name="phone" maxlength="50" placeholder="010-0000-0000"><p class="err">올바른 연락처를 입력해 주세요.</p></div>
+          <div class="field"><label for="email">이메일<i>*</i></label><input type="email" id="email" name="email" maxlength="254" placeholder="name@company.com"><p class="err">올바른 이메일 주소를 입력해 주세요.</p></div>
         </div>
         <div class="row2 reveal">
           <div class="field"><label for="budget">예상 예산</label>
@@ -85,7 +85,7 @@
               <option value="">선택해 주세요</option>
               <option>1,000만원 미만</option><option>1,000만 ~ 3,000만원</option><option>3,000만 ~ 5,000만원</option><option>5,000만 ~ 1억원</option><option>1억원 이상</option><option>미정 / 협의</option>
             </select></div>
-          <div class="field"><label for="schedule">희망 일정</label><input type="text" id="schedule" name="schedule" placeholder="예) 2026년 12월 중순"></div>
+          <div class="field"><label for="schedule">희망 일정</label><input type="text" id="schedule" name="schedule" maxlength="100" placeholder="예) 2026년 12월 중순"></div>
         </div>
         <div class="field reveal"><label for="source">유입경로</label>
           <select id="source" name="source">
@@ -95,13 +95,8 @@
 
         <div class="field reveal">
           <label for="message">문의 내용<i>*</i></label>
-          <textarea id="message" name="message" placeholder="프로젝트 목적, 규모(참석 인원 등), 필요한 서비스를 자유롭게 적어주세요."></textarea>
+          <textarea id="message" name="message" maxlength="4800" placeholder="프로젝트 목적, 규모(참석 인원 등), 필요한 서비스를 자유롭게 적어주세요."></textarea>
           <p class="err">문의 내용을 10자 이상 입력해 주세요.</p>
-        </div>
-
-        <div class="field reveal">
-          <span class="lbl">첨부파일</span>
-          <label class="file-box"><input type="file" name="file"><b>파일 선택</b><span class="file-name">기획안, RFP 등 참고 파일 (최대 20MB)</span></label>
         </div>
 
         <div class="agree reveal">
@@ -111,6 +106,7 @@
         </div>
 
         <button type="submit" class="btn-submit reveal">문의 보내기</button>
+        <p class="send-err">문의를 보내지 못했습니다. 잠시 후 다시 시도해 주시거나 wcat@wordcat.co.kr 로 메일 주시면 빠르게 답변드리겠습니다.</p>
       </form>
 
       <div class="form-done">

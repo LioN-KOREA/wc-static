@@ -435,6 +435,9 @@ section { padding: 140px 0; }
 .agree input { width: 20px; height: 20px; accent-color: var(--brand); }
 .btn-submit { width: 100%; padding: 22px; border-radius: 60px; background: var(--brand); color: #fff; font-size: 18px; font-weight: 700; transition: background .3s; }
 .btn-submit:hover { background: var(--brand-dark); }
+.btn-submit:disabled { opacity: .6; cursor: wait; }
+.send-err { display: none; color: #E5484D; font-size: 14px; margin-top: 14px; text-align: center; }
+.send-err.show { display: block; }
 .form-done { display: none; text-align: center; padding: 80px 30px; border-radius: 24px; background: var(--soft); }
 .form-done.show { display: block; }
 .form-done .ic { width: 72px; height: 72px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 34px; display: grid; place-items: center; margin: 0 auto 24px; }

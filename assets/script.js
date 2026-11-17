@@ -57,11 +57,11 @@ if (anchorTabs.length) {
   anchorTabs.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
 }
 
-// Forms (front-end only: validation + success screen)
+// Forms: validation, then send (if a sender is given) and show the success screen
 const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
 const filled = v => v.trim() !== '';
-const setupForm = (form, rules) => {
-  form.addEventListener('submit', e => {
+const setupForm = (form, rules, send) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     let firstBad = null;
     Object.entries(rules).forEach(([key, ok]) => {
@@ -75,11 +75,41 @@ const setupForm = (form, rules) => {
     agreeErr.classList.toggle('show', !agree.checked);
     if (!agree.checked && !firstBad) firstBad = agree;
     if (firstBad) { firstBad.focus(); return; }
-    // TODO: 실제 전송 연결 (이메일 발송 서비스 또는 서버 API)
+    if (send) {
+      const btn = form.querySelector('.btn-submit'), label = btn.textContent, sendErr = form.querySelector('.send-err');
+      btn.disabled = true; btn.textContent = '보내는 중…'; sendErr.classList.remove('show');
+      try { await send(form); }
+      catch (err) {
+        console.error(err);
+        btn.disabled = false; btn.textContent = label; sendErr.classList.add('show');
+        return;
+      }
+    }
     form.style.display = 'none';
     document.querySelector('.form-done').classList.add('show');
     scrollTo({ top: document.querySelector('.form-done').offsetTop - 150, behavior: 'smooth' });
   });
+};
+
+// Contact form → inquiry e-mail API
+const INQUIRY_API = 'https://2lk8xws32d.execute-api.ap-northeast-2.amazonaws.com/api/v0/send-inquiry';
+const INQUIRY_TYPES = { imc: 'IMC', mice: 'MICE', translation: 'LINGUISTICS', tour: 'TRAVEL', voucher: 'EXPORT', etc: 'OTHER' };
+const sendInquiry = async form => {
+  const f = form.elements, val = name => f[name].value.trim();
+  // the API has no budget/schedule fields, so they go at the end of the message
+  const extra = [['예상 예산', val('budget')], ['희망 일정', val('schedule')]].filter(([, v]) => v).map(([k, v]) => `${k}: ${v}`).join('\n');
+  const tail = extra ? '\n\n---\n' + extra : '';
+  const body = {
+    senderName: val('name').slice(0, 100),
+    senderEmail: val('email'),
+    senderContactNo: val('phone').slice(0, 50),
+    senderAffiliation: val('company').slice(0, 200),
+    senderInquiryType: INQUIRY_TYPES[f.type.value] || 'OTHER',
+    senderComments: val('message').slice(0, 5000 - tail.length) + tail,
+    senderHowIFoundYourWebsite: val('source').slice(0, 200),
+  };
+  const res = await fetch(INQUIRY_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(20000) });
+  if (!res.ok) throw new Error(`inquiry API ${res.status}: ${await res.text().catch(() => '')}`);
 };
 
 const form = document.querySelector('#contactForm');
@@ -87,17 +117,13 @@ if (form) {
   const preset = new URLSearchParams(location.search).get('type');
   const presetInput = preset && form.querySelector(`input[name=type][value="${CSS.escape(preset)}"]`);
   if (presetInput) presetInput.checked = true;
-  const fileInput = form.querySelector('input[type=file]');
-  fileInput.addEventListener('change', () => {
-    form.querySelector('.file-name').textContent = fileInput.files[0] ? fileInput.files[0].name : '기획안, RFP 등 참고 파일 (최대 20MB)';
-  });
   setupForm(form, {
     company: filled,
     name: filled,
     phone: v => /^[0-9\-\s]{9,}$/.test(v.trim()),
     email: isEmail,
     message: v => v.trim().length >= 10,
-  });
+  }, sendInquiry);
 }
 
 // Creators network join form (recruit page)
